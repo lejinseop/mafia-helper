@@ -1,0 +1,26 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main # main branch에 merge 되었을때
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # 저장소를 체크아웃 받고
+      - uses: actions/setup-node@v2 # github actions가 set up 될 때 node 환경 구성
+
+      - name: Build mafia-helper # Storybook을 build한다
+        run: |
+          yarn install
+          yarn build
+        env:
+          CI: true
+
+      - name: Deploy storybook # build되고 storybook-static을 storybook branch에 배포한다.
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy
