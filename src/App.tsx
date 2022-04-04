@@ -14,21 +14,6 @@ import machine, { jobs, steps } from './machine';
 import UserGrid from './components/UserGrid';
 import Countdown from './components/Countdown';
 
-const users = [
-  '김규식',
-  '김순철',
-  '류진영',
-  '민홍기',
-  '박제훈',
-  '박찬민',
-  '염서연',
-  '오평',
-  '이상진',
-  '이장춘',
-  '임정목',
-  '현태수',
-] as const;
-
 const keyOfSteps = Object.keys(steps);
 
 function App() {

@@ -1,4 +1,4 @@
-import { createMachine, assign, Event, EventObject } from 'xstate';
+import { createMachine, assign } from 'xstate';
 import { uniq } from 'lodash';
 
 export const users = [
